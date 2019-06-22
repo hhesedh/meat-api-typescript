@@ -1,11 +1,17 @@
-const users = [
-  { name: 'Peter Parker', email: 'peter@marvel.com' },
-  { name: 'Bruce Wayne', email: 'bruce@dc.com' },
+import * as mongoose from 'mongoose'
 
-]
-
-export class User {
-  static findAll(): Promise<any> {
-    return Promise.resolve(users)
+const userSchema = new mongoose.Schema({
+  name: {
+    type: String
+  },
+  email: {
+    type: String,
+    unique: true
+  },
+  password: {
+    type: String,
+    select: false
   }
-}
+})
+
+export const User = mongoose.model('User', userSchema)
