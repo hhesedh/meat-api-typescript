@@ -20,7 +20,9 @@ export class Server {
           version: '1.0.0'
         })
 
+        //plugins
         this.application.use(restify.plugins.queryParser())
+        this.application.use(restify.plugins.bodyParser())
 
         // routes
         for (let router of routers) {
